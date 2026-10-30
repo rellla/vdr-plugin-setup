@@ -112,6 +112,9 @@ msgstr "Reboot"
 msgid "Enter Pin: "
 msgstr "Pin Eingabe: "
 
+msgid "Parameters"
+msgstr "Parameter"
+
 msgid "Really reboot?"
 msgstr "Wirklich neu booten?"
 

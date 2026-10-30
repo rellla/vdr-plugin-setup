@@ -70,7 +70,7 @@ void cSetupPluginMenu::Set( )
   if (_moveMode)
      SetHelp(tr("PageUp"),  tr("PageDown"), tr("Before"), tr("After"));
   else
-     SetHelp(tr("PageUp"),  tr("PageDown"), trVDR("Parameters"), tr("Move"));
+     SetHelp(tr("PageUp"),  tr("PageDown"), tr("Parameters"), tr("Move"));
 
   setHelp();
   Display();
@@ -106,7 +106,7 @@ eOSState cSetupPluginMenu::ProcessKey( eKeys Key )
                       }
                    else { // Edit Parameter
                       char *tmp=NULL;
-                      asprintf(&tmp, "%s-%s", trVDR("Plugin"), trVDR("Parameters"));
+                      asprintf(&tmp, "%s-%s", trVDR("Plugin"), tr("Parameters"));
                       return(AddSubMenu(new cSetupPluginParameter(tmp, _plugins->Get(Current()))));
                       free(tmp);
                       }
@@ -167,7 +167,7 @@ void cSetupPluginParameter::Set( )
      strncpy(_editParameter, param, sizeof(_editParameter));
      _editParameter[sizeof(_editParameter) - 1] = '\0';
      }
-  asprintf(&tmp, "%s-%s", trVDR("Plugin"), trVDR("Parameters"));
+  asprintf(&tmp, "%s-%s", trVDR("Plugin"), tr("Parameters"));
   Add(new cMenuEditStrItem(tmp, _editParameter, sizeof(_editParameter), trVDR(FileNameChars)));
 
   asprintf(&tmp, "%s: %s", trVDR("Plugin"), _plugin->GetName());
@@ -536,7 +536,7 @@ char * cSetupVdrMenu::createMenuName( cSubMenuNode *node )
   if (type == cSubMenuNode::MENU)
      asprintf(&tmp, "%s+%s", prefix, node->GetName());
   else if (type == cSubMenuNode::SYSTEM)
-     asprintf(&tmp, "%s %s", prefix, trVDR(node->GetName()));
+     asprintf(&tmp, "%s %s", prefix, strcmp(node->GetName(), "Commands") == 0 ? trVDR("Button$Commands") : trVDR(node->GetName()));
   else if (type == cSubMenuNode::CALL_PLUGIN)
      if (node->GetCustomTitle() != NULL && strcmp(node->GetCustomTitle(), "") != 0)
         asprintf(&tmp, "%s %s  (%s)", prefix, node->GetCustomTitle(), node->GetName());
