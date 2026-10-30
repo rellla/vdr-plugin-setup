@@ -39,9 +39,13 @@ class TimerString : public cListObject
 {
   private:
     cString  _timer;
+    cString  _remote;
+    int      _id;
   public:
-    TimerString (cString timer)   {_timer=timer; }
+    TimerString (cString timer, const char *remote = NULL, int id = 0) {_timer=timer; _remote=remote; _id=id; }
     cString      GetTimerString() {return (_timer);}
+    const char  *GetRemote()      {return (*_remote);}
+    int          GetId()          {return (_id);}
 };
 
 class TimerList
@@ -51,7 +55,7 @@ class TimerList
   public:
     TimerList()  {};
     ~TimerList() {};
-    void SaveTimer();
+    bool SaveTimer();
     void RestoreTimer();
 };
 

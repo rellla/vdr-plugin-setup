@@ -11,6 +11,9 @@
 
 
 #include <string.h>
+#include <vdr/channels.h>
+#include <vdr/skins.h>
+#include <vdr/timers.h>
 #include "util.h"
 #include "debug.h"
 #include "setupsetup.h"
@@ -251,18 +254,23 @@ void Util::SwitchChannelList(const char *selectedChannelList)
      DEBUG4("%s Can not resolve realpath of %s  errno=%d\n", DBG_PREFIX, channelFile, errno);
   else {
      if (strcmp(resolvedPath, newChannelFile)!= 0) { // channels changed !!
-        Channels.SwitchTo(1);
-        if (unlink(channelFile) == 0) {
-           if (symlink(newChannelFile, channelFile)!= 0)
-              DEBUG5("%s Can not link File %s  to %s errno=%d\n", DBG_PREFIX, tmp, channelFile, errno);
-           TimerList timers;
-           timers.SaveTimer();
-           Channels.Load(channelFile, true, false); // Read Channel-List
-           Channels.SwitchTo(1);
-           timers.RestoreTimer();
+        TimerList timers;
+        if (!timers.SaveTimer()) {
+           esyslog("setup: can't switch channel list while recording");
+           Skins.Message(mtError, tr("Can't switch channel list while recording!"));
            }
-        else
-           DEBUG4("%s Can not unlink File %s  errno=%d\n", DBG_PREFIX, channelFile, errno);
+        else {
+           if (unlink(channelFile) == 0) {
+              if (symlink(newChannelFile, channelFile)!= 0)
+                 DEBUG5("%s Can not link File %s  to %s errno=%d\n", DBG_PREFIX, newChannelFile, channelFile, errno);
+              }
+           else
+              DEBUG4("%s Can not unlink File %s  errno=%d\n", DBG_PREFIX, channelFile, errno);
+           cChannels::Load(channelFile, true, false); // Read Channel-List
+           timers.RestoreTimer();
+           LOCK_CHANNELS_READ;
+           Channels->SwitchTo(1);
+           }
         }
      }
 
@@ -273,30 +281,44 @@ void Util::SwitchChannelList(const char *selectedChannelList)
 
 
 // Timer Save and Restore Methods
-void TimerList::SaveTimer()
+// Channel pointers of timers become invalid when the channel list is reloaded,
+// so all timers are converted to text and removed before the reload.
+bool TimerList::SaveTimer()
 {
   myTimers.Clear();
-  for (cTimer *t = Timers.First(); t; t= Timers.Next(t)) {
-     myTimers.Add(new TimerString(t->ToText(true)));
+  LOCK_TIMERS_WRITE;
+  for (const cTimer *t = Timers->First(); t; t = Timers->Next(t)) {
+     if (t->Recording())
+        return false;
      }
-  Timers.cList<cTimer>::Clear();
+  Timers->SetExplicitModify();
+  while (cTimer *t = Timers->First()) {
+     myTimers.Add(new TimerString(t->ToText(true), t->Remote(), t->Id()));
+     Timers->Del(t);
+     }
+  Timers->SetModified();
+  return true;
 }
 
 // restore Timers, delete Timers with unknown channel
 void TimerList::RestoreTimer()
 {
-  Timers.cList<cTimer>::Clear();
-
-  for (TimerString *timer = myTimers.First(); timer; timer= myTimers.Next(timer)){
-     cString t = timer->GetTimerString();
+  LOCK_TIMERS_WRITE;
+  Timers->SetExplicitModify();
+  for (TimerString *timer = myTimers.First(); timer; timer = myTimers.Next(timer)) {
      cTimer *tim = new cTimer();
-     tim->Parse(t);
-     if (tim->Channel() != NULL)
-        Timers.Add(tim);
+     if (tim->Parse(timer->GetTimerString()) && tim->Channel() != NULL) {
+        if (timer->GetRemote()) {
+           tim->SetRemote(timer->GetRemote());
+           tim->SetId(timer->GetId());
+           }
+        Timers->Add(tim);
+        }
+     else {
+        isyslog("setup: deleting timer with unknown channel: %s", *timer->GetTimerString());
+        delete tim;
+        }
      }
-  Timers.SetModified();
+  Timers->SetModified();
   myTimers.Clear();
 }
-
-
-
