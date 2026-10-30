@@ -11,7 +11,7 @@
 
 
 #include <vdr/menu.h>
-#include <vdr/submenu.h>
+#include "submenu.h"
 #include <string.h>
 
 #include "setupsetup.h"

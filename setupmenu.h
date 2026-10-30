@@ -13,7 +13,7 @@
 #define SETUPMENU_H
 #include <vdr/menu.h>
 #include <vdr/interface.h>
-#include <vdr/submenu.h>
+#include "submenu.h"
 #include "config.h"
 /**
 @author Ralf Dotzert
