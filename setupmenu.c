@@ -709,7 +709,7 @@ eOSState cSetupGenericMenu::ProcessKey( eKeys Key )
                        }
                     break;
      case kRed:
-                    {
+                    if (n != NULL) {
                        char *help = NULL;
                        if (n->GetType() == MenuNode::ENTRY)
                           help = GetLongHelp(n->GetMenuEntry()->GetHelp2());
@@ -927,7 +927,7 @@ eOSState cSetupMenu::StandardProcessKey( eKeys Key )
                          }
                       break;
       case kRed:
-                      {
+                      if (node != NULL) {
                          char *help = NULL;
                          if (node->GetType() == MenuNode::ENTRY)
                             help = GetLongHelp(node->GetMenuEntry()->GetHelp2());
