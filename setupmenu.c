@@ -166,7 +166,7 @@ void cSetupPluginParameter::Set( )
      _editParameter[0] = '\0';
   else {
      strncpy(_editParameter, param, sizeof(_editParameter));
-     _editParameter[sizeof(_editParameter)] = '\0';
+     _editParameter[sizeof(_editParameter) - 1] = '\0';
      }
   asprintf(&tmp, "%s-%s", trVDR("Plugin"), trVDR("Parameters"));
   Add(new cMenuEditStrItem(tmp, _editParameter, sizeof(_editParameter), trVDR(FileNameChars)));
@@ -266,7 +266,7 @@ void cSetupVdrMenu::Set( )
                       strncpy(_editTitle, _vdrSubMenu.GetAbsNode(_createEditNodeIndex)->GetCustomTitle(), sizeof(_editTitle));
                    else
                       strncpy(_editTitle, "", sizeof(_editTitle));
-                   _editTitle[sizeof(_editTitle)] = '\0';
+                   _editTitle[sizeof(_editTitle) - 1] = '\0';
                    Add(new cMenuEditStrItem(tr("Title"), _editTitle, sizeof(_editTitle), trVDR(FileNameChars)));
 
                    char *menutitle = NULL;
@@ -277,11 +277,11 @@ void cSetupVdrMenu::Set( )
                 else if (_vdrSubMenu.GetAbsNode(_createEditNodeIndex)->GetType() == cSubMenuNode::COMMAND ||
                          _vdrSubMenu.GetAbsNode(_createEditNodeIndex)->GetType() == cSubMenuNode::THREAD) {
                    strncpy(_editTitle, _vdrSubMenu.GetAbsNode(_createEditNodeIndex)->GetName(), sizeof(_editTitle));
-                   _editTitle[sizeof(_editTitle)] = '\0';
+                   _editTitle[sizeof(_editTitle) - 1] = '\0';
                    Add(new cMenuEditStrItem(trVDR("Name"), _editTitle, sizeof(_editTitle), trVDR(FileNameChars)));
 
                    strncpy(_editCommand, _vdrSubMenu.GetAbsNode(_createEditNodeIndex)->GetCommand(), sizeof(_editCommand));
-                   _editTitle[sizeof(_editCommand)] = '\0';
+                   _editCommand[sizeof(_editCommand) - 1] = '\0';
                    Add(new cMenuEditStrItem(tr("Command"), _editCommand, sizeof(_editCommand), trVDR(FileNameChars)));
 
                    if (_vdrSubMenu.GetAbsNode(_createEditNodeIndex)->CommandConfirm())
@@ -300,7 +300,7 @@ void cSetupVdrMenu::Set( )
                    }
                 else { // MENU
                    strncpy(_editTitle, _vdrSubMenu.GetAbsNode(_createEditNodeIndex)->GetName(), sizeof(_editTitle));
-                   _editTitle[sizeof(_editTitle)] = '\0';
+                   _editTitle[sizeof(_editTitle) - 1] = '\0';
                    Add(new cMenuEditStrItem(trVDR("Name"), _editTitle, sizeof(_editTitle), trVDR(FileNameChars)));
 
                    SetTitle(tr("Edit Menu"));
@@ -1008,8 +1008,15 @@ eOSState cSetupMenu::GetCodeProcessKey( eKeys Key )
   switch (Key) {
     case k0 ... k9:
                 num = Key - k0;
-                sprintf(_childLockEntered, "%s%d", _childLockEntered, num);
-                sprintf(_childLockEnteredHidden, "%s*", _childLockEnteredHidden);
+                {
+                  size_t len = strlen(_childLockEntered);
+                  if (len < strlen(_config->GetChildLock())) {
+                     _childLockEntered[len] = '0' + num;
+                     _childLockEntered[len + 1] = '\0';
+                     _childLockEnteredHidden[len] = '*';
+                     _childLockEnteredHidden[len + 1] = '\0';
+                     }
+                }
                 SetAskChildCode();
                 if (strlen(_childLockEntered) == strlen(_config->GetChildLock())) {
                    if (strcmp(_childLockEntered,_config->GetChildLock()) == 0) {

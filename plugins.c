@@ -372,10 +372,11 @@ const char * Plugins::GetActivePlugins( )
     if(plugin->GetActive() && plugin->GetInSystem() )
     {
       const char *p = plugin->GetParameter();
+      size_t len = strlen(buf);
       if( p == NULL)
-        sprintf(buf, "%s \\\"-P%s \\\"", buf,  plugin->GetName());
+        snprintf(buf + len, sizeof(buf) - len, " \\\"-P%s \\\"", plugin->GetName());
       else
-        sprintf(buf, "%s \\\"-P%s %s\\\"", buf, plugin->GetName(), p);
+        snprintf(buf + len, sizeof(buf) - len, " \\\"-P%s %s\\\"", plugin->GetName(), p);
     }
   }
   if( _activePlugins != NULL)

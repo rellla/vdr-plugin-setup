@@ -33,8 +33,8 @@ cSetupSetup::cSetupSetup()
 bool cSetupSetup::SetupParse( const char *Name, const char *Value )
 {
   if      (!strcasecmp(Name, "DirectMenu"))  DirectMenu = atoi(Value);
-  else if (!strcasecmp(Name, "MenuSuffix"))  snprintf(_menuSuffix, sizeof(_menuSuffix), Value);
-  else if (!strcasecmp(Name, "EntryPrefix")) snprintf(_entryPrefix, sizeof(_entryPrefix), Value);
+  else if (!strcasecmp(Name, "MenuSuffix"))  snprintf(_menuSuffix, sizeof(_menuSuffix), "%s", Value);
+  else if (!strcasecmp(Name, "EntryPrefix")) snprintf(_entryPrefix, sizeof(_entryPrefix), "%s", Value);
   else if (!strcasecmp(Name, "ReturnValue")) ReturnValue = atoi(Value);
   else return false;
 

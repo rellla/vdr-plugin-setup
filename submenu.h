@@ -130,7 +130,7 @@ public:
   void CreateMenu(int index, const char *menuTitle);
   void DeleteMenu(int index);
   char *GetMenuSuffix() { return _menuSuffix; }
-  void SetMenuSuffix(char *suffix) { if (_menuSuffix) free(_menuSuffix); asprintf(&_menuSuffix, suffix); }
+  void SetMenuSuffix(char *suffix) { if (_menuSuffix) free(_menuSuffix); _menuSuffix = strdup(suffix); }
   bool isTopMenu() { return (_currentParentMenuTree == NULL); }
   const char *GetParentMenuTitel();
 private:

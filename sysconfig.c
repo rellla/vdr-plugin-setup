@@ -64,13 +64,13 @@ void Variable::Print( )
   if( _name == NULL)
     printf("NULL");
   else
-    printf(_name);
+    printf("%s", _name);
 
   printf(" Value=");
   if( _value == NULL)
     printf("NULL");
   else
-    printf(_value);
+    printf("%s", _value);
   printf("\n"); 
 }
 

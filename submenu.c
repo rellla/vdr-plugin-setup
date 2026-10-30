@@ -452,7 +452,7 @@ bool cSubMenu::LoadXml(char *fname)
         if ((tmp = (char*)root->Attribute("suffix")) == NULL)
            asprintf(&_menuSuffix, " "); // set default menuSuffix // asprintf(&_menuSuffix, " ...");
         else
-           asprintf(&_menuSuffix, tmp);
+           _menuSuffix = strdup(tmp);
 
         if ((root = root->FirstChildElement()) != NULL) {
            do {
@@ -535,8 +535,8 @@ bool cSubMenu::SaveXml(char *fname)
      for (cSubMenuNode *node = _menuTree.First(); node; node = _menuTree.Next(node))
          node->SaveXml(&root);
 
-         if (xml.InsertEndChild(comment) != NULL && xml.InsertEndChild(root) != NULL)
-            ok = xml.SaveFile(fname);
+     if (xml.InsertEndChild(comment) != NULL && xml.InsertEndChild(root) != NULL)
+        ok = xml.SaveFile(fname);
      }
   else
      ok = false;
