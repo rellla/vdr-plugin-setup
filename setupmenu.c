@@ -149,7 +149,6 @@ void cSetupPluginMenu::setHelp()
 cSetupPluginParameter::cSetupPluginParameter( const char *title, Plugin * plugin ) : cOsdMenu(title, 25)
 {
   _plugin = plugin;
-  _edit   = false;
   Set();
 }
 
@@ -182,21 +181,11 @@ eOSState cSetupPluginParameter::ProcessKey( eKeys Key )
 
   eOSState state = cOsdMenu::ProcessKey(Key);
 
-  switch (Key) {
-    case kOk:
-              if (!_edit)
-                 return osBack;
-              else {
-                 _plugin->SetParameter(_editParameter);
-                 _edit=false;
-                 }
-              break;
-    case kRight:
-              _edit = true;
-              break;
-    default:
-              break;
-    }
+  if (Key == kOk) {
+     _plugin->SetParameter(_editParameter);
+     if (state == osUnknown) // not in edit mode
+        return osBack;
+     }
   return state;
 }
 
@@ -566,7 +555,6 @@ char * cSetupVdrMenu::createMenuName( cSubMenuNode *node )
 cSetupGenericMenu::cSetupGenericMenu(const char *title, MenuNode *node, Config  *config)  : cSetupMenu()
 {
   _node     = node;
-  _editItem = false;
   _currLine = 0;
   _config   = config;
 
@@ -693,7 +681,7 @@ eOSState cSetupGenericMenu::ProcessKey( eKeys Key )
                           }
                        }
                     else {
-                       if (!_editItem) { //close submenu only if we do not have edited an textitem
+                       if (state == osUnknown) { // close submenu only if no item was in edit mode
                           state = osBack;
                           _config->SaveFile(); // Write New Configurationfile
 
@@ -704,8 +692,6 @@ eOSState cSetupGenericMenu::ProcessKey( eKeys Key )
                               }
                           ExecuteCommand(_node->GetMenu()->GetCommand());
                           }
-
-                       _editItem = false;
                        }
                     break;
      case kRed:
@@ -729,17 +715,6 @@ eOSState cSetupGenericMenu::ProcessKey( eKeys Key )
                     break;
      case kBlue:
                     break;
-     case kRight:
-                    if (n!= NULL &&
-                        n->GetType() == MenuNode::ENTRY &&
-                       (n->GetMenuEntry()->GetType() == Util::TEXT ||
-                        n->GetMenuEntry()->GetType() == Util::NUMBER_TEXT ||
-                        n->GetMenuEntry()->GetType() == Util::HEX ||
-                        n->GetMenuEntry()->GetType() == Util::NUMBER)
-                        )
-                        _editItem = true;
-                    break;
-
      default:
                     if (n!= NULL) {
                        if (n->GetType() == MenuNode::ENTRY) {

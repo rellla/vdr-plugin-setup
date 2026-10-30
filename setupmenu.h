@@ -23,7 +23,6 @@ class cSetupPluginParameter : public cOsdMenu
   private:
     Plugin  *_plugin;
     char     _editParameter[500];
-    bool     _edit;
   public:
     cSetupPluginParameter(const char *title, Plugin *plugin);
     ~cSetupPluginParameter();
@@ -103,7 +102,6 @@ class cSetupGenericMenu : public cSetupMenu
 {
   private:
     MenuNode *_node;
-    bool      _editItem;
     int       _currLine;
     Config   *_config;
     const char * nohk(const char *str);
