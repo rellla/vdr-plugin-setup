@@ -1,7 +1,7 @@
 # VDR plugin language source file.
 # Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
 # This file is distributed under the same license as the VDR package.
-# Vladim�r B�rta <vladimir.barta@k2atmitec.cz>, 2006
+# Vladimír Bárta <vladimir.barta@k2atmitec.cz>, 2006
 #
 msgid ""
 msgstr ""
@@ -9,18 +9,18 @@ msgstr ""
 "Report-Msgid-Bugs-To: <vdrdev@schmirler.de>\n"
 "POT-Creation-Date: 2013-07-28 03:57+0200\n"
 "PO-Revision-Date: 2008-01-27 18:38+0100\n"
-"Last-Translator: Vladim�r B�rta <vladimir.barta@k2atmitec.cz>\n"
+"Last-Translator: Vladimír Bárta <vladimir.barta@k2atmitec.cz>\n"
 "Language-Team: <vdr@linuxtv.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "VDR-Setup Extension"
 msgstr ""
 
 msgid "Setup"
-msgstr "Nastaven�"
+msgstr "Nastavení"
 
 msgid "Menu Edit"
 msgstr ""

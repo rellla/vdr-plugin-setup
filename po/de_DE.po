@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: <vdr@linuxtv.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "VDR-Setup Extension"
@@ -23,13 +23,13 @@ msgid "Setup"
 msgstr "Einstellungen"
 
 msgid "Menu Edit"
-msgstr "Men� bearbeiten"
+msgstr "Menü bearbeiten"
 
 msgid "Plugins activate / deactivate"
 msgstr "Plugins aktivieren / sortieren"
 
 msgid "protected"
-msgstr "gesch�tzt"
+msgstr "geschützt"
 
 msgid "PageUp"
 msgstr "Seite ^"
@@ -56,31 +56,31 @@ msgid "Command"
 msgstr "Befehl"
 
 msgid "Has to confirm"
-msgstr "Zu best�tigen"
+msgstr "Zu bestätigen"
 
 msgid "Execute as thread"
-msgstr "Als Thread ausf�hren"
+msgstr "Als Thread ausführen"
 
 msgid "Edit Command"
 msgstr "Editiere Befehl"
 
 msgid "Edit Menu"
-msgstr "Editiere Men�"
+msgstr "Editiere Menü"
 
 msgid "Create Menu"
-msgstr "Neues Men�"
+msgstr "Neues Menü"
 
 msgid "Create Command"
 msgstr "Neuer Befehl"
 
 msgid "Delete Menu?"
-msgstr "Men� l�schen?"
+msgstr "Menü löschen?"
 
 msgid "Up/Dn for new location - color key to move"
-msgstr "Auf/Ab f�r neue Position - dann Farbtaste"
+msgstr "Auf/Ab für neue Position - dann Farbtaste"
 
 msgid "Menu"
-msgstr "Men�"
+msgstr "Menü"
 
 msgid "Into"
 msgstr "Hinein"
@@ -92,7 +92,7 @@ msgid "Edit"
 msgstr "Editieren"
 
 msgid "Delete"
-msgstr "L�schen"
+msgstr "Löschen"
 
 msgid "missing channels/xxx.conf"
 msgstr "fehlende channels/xxx.conf"
@@ -119,16 +119,16 @@ msgid "Can't switch channel list while recording!"
 msgstr "Kanalliste kann während einer Aufnahme nicht gewechselt werden!"
 
 msgid "Invalid Pin!"
-msgstr "Ung�ltige Pin!"
+msgstr "Ungültige Pin!"
 
 msgid "setupSetup$Main menu entry"
-msgstr "Hauptmen� Eintrag"
+msgstr "Hauptmenü Eintrag"
 
 msgid "setupSetup$Menu suffix"
-msgstr "Men� Suffix"
+msgstr "Menü Suffix"
 
 msgid "setupSetup$Entry prefix"
 msgstr "Entry Prefix"
 
 msgid "setupSetup$Return value"
-msgstr "R�ckgabe Wert"
+msgstr "Rückgabe Wert"

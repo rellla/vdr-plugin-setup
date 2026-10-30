@@ -1040,7 +1040,7 @@ bool MenuEntry::AddEntry( TiXmlNode *node  )
 
 /**
  * Convert ENtry in XML Structure
- * @return xml E�lement or NULL if error
+ * @return xml Element or NULL if error
  */
 TiXmlNode *MenuEntry::SaveXml( )
 {

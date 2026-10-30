@@ -16,7 +16,7 @@ msgstr ""
 "Language-Team: <vdr@linuxtv.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "VDR-Setup Extension"
@@ -32,7 +32,7 @@ msgid "Plugins activate / deactivate"
 msgstr "Activer/desactiver des plugins"
 
 msgid "protected"
-msgstr "prot�g�"
+msgstr "protégé"
 
 msgid "PageUp"
 msgstr "Page ^"
@@ -44,10 +44,10 @@ msgid "Before"
 msgstr "Avant"
 
 msgid "After"
-msgstr "Apr�s"
+msgstr "Après"
 
 msgid "Move"
-msgstr "D�placer"
+msgstr "Déplacer"
 
 msgid "Title"
 msgstr ""
@@ -74,17 +74,17 @@ msgstr "Edition du menu"
 
 #, fuzzy
 msgid "Create Menu"
-msgstr "Cr�er"
+msgstr "Créer"
 
 #, fuzzy
 msgid "Create Command"
-msgstr "Cr�er"
+msgstr "Créer"
 
 msgid "Delete Menu?"
 msgstr "Effacer le menu?"
 
 msgid "Up/Dn for new location - color key to move"
-msgstr "^/v pour nouvel emplacement - touches couleurs pour d�placer"
+msgstr "^/v pour nouvel emplacement - touches couleurs pour déplacer"
 
 #, fuzzy
 msgid "Menu"
@@ -94,7 +94,7 @@ msgid "Into"
 msgstr "Dans"
 
 msgid "Create"
-msgstr "Cr�er"
+msgstr "Créer"
 
 msgid "Edit"
 msgstr "Modifier"
@@ -115,13 +115,13 @@ msgid "Error in configuration files"
 msgstr "Erreur dans fichiers de configurations"
 
 msgid "Reboot"
-msgstr "Red�marer le syst�me"
+msgstr "Redémarrer le système"
 
 msgid "Enter Pin: "
 msgstr "Le code pin: "
 
 msgid "Really reboot?"
-msgstr "Vraiment red�marrer le syst�me?"
+msgstr "Vraiment redémarrer le système?"
 
 msgid "Invalid Pin!"
 msgstr "La clef est fausse!"
@@ -133,7 +133,7 @@ msgid "setupSetup$Menu suffix"
 msgstr "Suffixe Menu"
 
 msgid "setupSetup$Entry prefix"
-msgstr "Entry pr�fix"
+msgstr "Entry préfix"
 
 msgid "setupSetup$Return value"
 msgstr "Valeur de retour"

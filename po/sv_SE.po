@@ -14,14 +14,14 @@ msgstr ""
 "Language-Team: <vdr@linuxtv.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "VDR-Setup Extension"
 msgstr ""
 
 msgid "Setup"
-msgstr "Inst�llningar"
+msgstr "Inställningar"
 
 msgid "Menu Edit"
 msgstr ""
@@ -52,7 +52,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Edit Plugin"
-msgstr "�ndra"
+msgstr "Ändra"
 
 msgid "Command"
 msgstr ""
@@ -68,7 +68,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Edit Menu"
-msgstr "�ndra"
+msgstr "Ändra"
 
 msgid "Create Menu"
 msgstr ""
@@ -92,7 +92,7 @@ msgid "Create"
 msgstr ""
 
 msgid "Edit"
-msgstr "�ndra"
+msgstr "Ändra"
 
 msgid "Delete"
 msgstr "Ta bort"

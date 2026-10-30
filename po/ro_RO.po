@@ -14,14 +14,14 @@ msgstr ""
 "Language-Team: <vdr@linuxtv.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "VDR-Setup Extension"
 msgstr ""
 
 msgid "Setup"
-msgstr "Configura�ie"
+msgstr "Configuraţie"
 
 msgid "Menu Edit"
 msgstr ""
@@ -52,7 +52,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Edit Plugin"
-msgstr "Modific�"
+msgstr "Modifică"
 
 msgid "Command"
 msgstr ""
@@ -68,7 +68,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Edit Menu"
-msgstr "Modific�"
+msgstr "Modifică"
 
 msgid "Create Menu"
 msgstr ""
@@ -92,10 +92,10 @@ msgid "Create"
 msgstr ""
 
 msgid "Edit"
-msgstr "Modific�"
+msgstr "Modifică"
 
 msgid "Delete"
-msgstr "�terge"
+msgstr "Şterge"
 
 msgid "missing channels/xxx.conf"
 msgstr ""

@@ -13,14 +13,14 @@ msgstr ""
 "Language-Team: <vdr@linuxtv.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-13\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "VDR-Setup Extension"
 msgstr ""
 
 msgid "Setup"
-msgstr "S�tted"
+msgstr "Sätted"
 
 msgid "Menu Edit"
 msgstr ""

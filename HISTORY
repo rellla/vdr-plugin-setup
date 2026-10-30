@@ -100,7 +100,7 @@ changes done by zulu
 -  fixed Bug: Know changes are saved again in sysConfigFile
 
 2005-10-03: Version 0.2.0
--  Added Setup Men� for plugin. Allowing to edit Menusuffix and Entry-Prefix)
+-  Added Setup Menu for plugin. Allowing to edit Menusuffix and Entry-Prefix)
 -  Changed minivdr-setup.xml format
    all <menu>..</menu> tags are now within a <menus>..</menus> tag
    New system attribute values for the Menu Tags:
