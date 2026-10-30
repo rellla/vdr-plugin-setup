@@ -115,6 +115,9 @@ msgstr "Pin Eingabe: "
 msgid "Really reboot?"
 msgstr "Wirklich neu booten?"
 
+msgid "Can't switch channel list while recording!"
+msgstr "Kanalliste kann während einer Aufnahme nicht gewechselt werden!"
+
 msgid "Invalid Pin!"
 msgstr "Ung�ltige Pin!"
 
