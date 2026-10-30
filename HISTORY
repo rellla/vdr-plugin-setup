@@ -8,6 +8,8 @@ VDR Plugin 'setup' Revision History
   while a recording is running
 - Fixed some buffer overruns and format string bugs
 - Removed the obsolete VDR patches
+- Added patches/vdr-2.8.4-setup.diff, needed for "Menu Edit"
+- Fixed crash on unknown tags in vdr-menu.xml
 
 2008-06-19: setup-0.3.1-zulu-edition
 - From now VDR-Extensions-Patch => 63 or
