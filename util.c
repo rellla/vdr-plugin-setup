@@ -280,6 +280,16 @@ void Util::SwitchChannelList(const char *selectedChannelList)
 }
 
 
+// Returns <plugins-config-dir>/setup/<name>.<OSDLanguage>.xml if it exists,
+// otherwise <plugins-config-dir>/setup/<name>.xml (same as VDR's main menu)
+cString Util::ConfigFile(const char *name)
+{
+  cString file = cString::sprintf("%s/setup/%s.%s.xml", cPlugin::ConfigDirectory(), name, Setup.OSDLanguage);
+  if (access(file, R_OK) != 0)
+     file = cString::sprintf("%s/setup/%s.xml", cPlugin::ConfigDirectory(), name);
+  return file;
+}
+
 // Timer Save and Restore Methods
 // Channel pointers of timers become invalid when the channel list is reloaded,
 // so all timers are converted to text and removed before the reload.

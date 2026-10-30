@@ -33,6 +33,7 @@ public:
     static const char * typeToStr(Type type);
     static const char * boolToStr( bool val );
     static void SwitchChannelList(const char  *selectedChannelList);
+    static cString ConfigFile(const char *name);
 };
 
 class TimerString : public cListObject

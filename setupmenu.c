@@ -200,17 +200,9 @@ cSetupVdrMenu::cSetupVdrMenu(const char *title): cOsdMenu(title, 25)
   _createEditNodeIndex  = 0;
 
   // Load Menu Configuration
-  char *menuXML = NULL;
-#if VDRVERSNUM < 10507
-  asprintf(&menuXML, "%s/setup/vdr-menu.%i.xml", cPlugin::ConfigDirectory(), Setup.OSDLanguage);
-#else
-  asprintf(&menuXML, "%s/setup/vdr-menu.%s.xml", cPlugin::ConfigDirectory(), Setup.OSDLanguage);
-#endif
-  if (access(menuXML, 06) == -1)
-     asprintf(&menuXML, "%s/setup/vdr-menu.xml", cPlugin::ConfigDirectory());
-  isyslog("setup: loading %s", menuXML);
-  _vdrSubMenu.LoadXml(menuXML);
-  free(menuXML);
+  cString menuXML = Util::ConfigFile("vdr-menu");
+  isyslog("setup: loading %s", *menuXML);
+  _vdrSubMenu.LoadXml((char *)*menuXML);
 
   _menuState  = UNDEFINED;
   Set();
@@ -768,20 +760,11 @@ void cSetupGenericMenu::ExecuteCommand( const char * cmd )
 
 cSetupMenu::cSetupMenu() : cOsdMenu(tr("Setup"))
 {
-  char *configFile=NULL;
-
   SetCols(20);
-#if VDRVERSNUM < 10507
-  asprintf(&configFile, "%s/setup/vdr-setup.%i.xml", cPlugin::ConfigDirectory(), Setup.OSDLanguage);
-#else
-  asprintf(&configFile, "%s/setup/vdr-setup.%s.xml", cPlugin::ConfigDirectory(), Setup.OSDLanguage);
-#endif
-  if (access(configFile, 06) == -1)
-     asprintf(&configFile, "%s/setup/vdr-setup.xml", cPlugin::ConfigDirectory());
-  isyslog("setup: loading %s", configFile);
+  cString configFile = Util::ConfigFile("vdr-setup");
+  isyslog("setup: loading %s", *configFile);
 
-  _config    = new Config( configFile );
-  free(configFile);
+  _config    = new Config((char *)*configFile);
 
   _number    = 0;
   _error     = false;

@@ -15,6 +15,7 @@
 #include <string.h>
 
 #include "setupsetup.h"
+#include "util.h"
 #include "debug.h"
 
 //*****************************************************************************
@@ -68,24 +69,17 @@ void cSetupSetupPage::Store( void )
 eOSState cSetupSetupPage::ProcessKey( eKeys Key )
 {
   cSubMenu vdrSubMenu;
-  char *menuXML = NULL;
   eOSState state = cOsdMenu::ProcessKey(Key);
   if (state == osUnknown) {
      switch (Key) {
-        case kOk: // Load Menu Configuration
-#if VDRVERSNUM < 10507
-                 asprintf(&menuXML, "%s/setup/vdr-menu.%i.xml", cPlugin::ConfigDirectory(), Setup.OSDLanguage);
-#else
-                 asprintf(&menuXML, "%s/setup/vdr-menu.%s.xml", cPlugin::ConfigDirectory(), Setup.OSDLanguage);
-#endif
-                 if (access(menuXML, 06) == -1)
-                    asprintf(&menuXML, "%s/setup/vdr-menu.xml", cPlugin::ConfigDirectory());
-                 if (vdrSubMenu.LoadXml(menuXML)) {
-                    isyslog("setup: saved setup to %s", menuXML);
+        case kOk: { // Load Menu Configuration
+                 cString menuXML = Util::ConfigFile("vdr-menu");
+                 if (vdrSubMenu.LoadXml((char *)*menuXML)) {
+                    isyslog("setup: saved setup to %s", *menuXML);
                     vdrSubMenu.SetMenuSuffix(setupSetup._menuSuffix);
                     vdrSubMenu.SaveXml();
                     }
-                 free(menuXML);
+                 }
                  Store();
                  return osBack;
         default: break;
