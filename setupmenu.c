@@ -918,7 +918,7 @@ eOSState cSetupMenu::StandardProcessKey( eKeys Key )
                             return AddSubMenu(new cSetupGenericMenu(node->GetName(), node, _config));
                             }
                          else if (node->GetType() == MenuNode::MENUSYSTEM) {
-                            cOsdMenu * menu =cSetupSystemMenu::GetSystemMenu (hk(node->GetMenu()->GetSystem()), _config);
+                            cOsdMenu * menu =cSetupSystemMenu::GetSystemMenu(node->GetMenu()->GetSystem(), _config);
                             if (menu != NULL)
                                AddSubMenu(menu);
                             }
