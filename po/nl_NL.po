@@ -1,6 +1,6 @@
 # VDR plugin language source file.
-# Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
-# This file is distributed under the same license as the VDR package.
+# Copyright (C) 2004-2009 Ralf Dotzert, Marc Wernecke
+# This file is distributed under the same license as the vdr-setup package.
 # Arnold Niessen <niessen@iae.nl> <arnold.niessen@philips.com>, 2001
 # Hans Dingemans <hans.dingemans@tacticalops.nl>, 2003
 # Maarten Wisse <Maarten.Wisse@urz.uni-hd.de>, 2005
