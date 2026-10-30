@@ -449,6 +449,7 @@ bool cSubMenu::LoadXml(char *fname)
   if ((ok = xmlDoc.LoadFile())) {
      if ((root = xmlDoc.FirstChildElement("menus")) != NULL) {
         char *tmp = NULL;
+        free(_menuSuffix);
         if ((tmp = (char*)root->Attribute("suffix")) == NULL)
            asprintf(&_menuSuffix, " "); // set default menuSuffix // asprintf(&_menuSuffix, " ...");
         else
@@ -683,8 +684,8 @@ const char * cSubMenu::ExecuteCommand(const char * cmd)
  */
 void cSubMenu::MoveMenu(int index, int toIndex, enum Where where)
 {
-  if (index < 0 || index > _nrNodes || // invalid index is ignored
-     toIndex < 0 || toIndex > _nrNodes || index == toIndex)
+  if (index < 0 || index >= _nrNodes || // invalid index is ignored
+     toIndex < 0 || toIndex >= _nrNodes || index == toIndex)
      return;
 
   cSubMenuNode *srcNode  = GetAbsNode(index);

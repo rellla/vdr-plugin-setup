@@ -118,6 +118,7 @@ public:
   bool Up(int *ParentIndex);
   bool Down(int index);
   int  GetNrOfNodes();
+  int  GetNrOfCurrentNodes() { return _currentMenuTree ? _currentMenuTree->Count() : 0; }
   cSubMenuNode* GetAbsNode(int index);
   cSubMenuNode* GetNode(int index);
   void PrintMenuTree();
