@@ -56,8 +56,12 @@ INCLUDES +=
 DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
 
 ### The object files (add further files here):
-OBJS     = $(PLUGIN).o  menus.o setupmenu.o setupsetup.o config.o plugins.o sysconfig.o util.o setupsystemmenu.o \
-           submenu.o tinystr.o tinyxml.o tinyxmlerror.o tinyxmlparser.o
+OBJS     = $(PLUGIN).o  menus.o setupmenu.o setupsetup.o config.o plugins.o sysconfig.o util.o setupsystemmenu.o
+
+# A VDR patched with patches/vdr-2.8.4-setup.diff already contains submenu and tinyxml:
+ifeq ($(findstring -DUSE_SETUP,$(CXXFLAGS)),)
+OBJS    += submenu.o tinystr.o tinyxml.o tinyxmlerror.o tinyxmlparser.o
+endif
 
 ### The main target:
 
