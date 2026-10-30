@@ -97,8 +97,8 @@ sysconfigFile kann dann vom Backend z.B.:runvdr einfach eingelesen und
               neu erzeugt.
 bootLinux     Enthält das Kommando, welches aufgerufen wird um LINUX zu
               rebooten. Default ="/sbin/reboot"
-VDRlibDir     Gibt das Verzeichnsi an, in welchem die VDR-Plugins abgelegt sind.
-              Deafult ="/usr/lib/vdr/plugins"
+VDRlibDir     Gibt das Verzeichnis an, in welchem die VDR-Plugins abgelegt sind.
+              Default = libdir aus vdr.pc
  
 
 

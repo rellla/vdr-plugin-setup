@@ -21,6 +21,10 @@
 #include "debug.h"
 #include "util.h"
 
+#ifndef VDR_PLUGIN_LIBDIR
+#define VDR_PLUGIN_LIBDIR "/usr/lib/vdr/plugins"
+#endif
+
 /**
  * Constructor
  * @param fname  XML File
@@ -77,7 +81,7 @@ bool Config::LoadFile()
            _bootLinux = Util::Strdupnew(tmp);
 
         if ((tmp = root->Attribute("VDRlibDir")) == NULL)
-           _libDir = Util::Strdupnew("/usr/lib/vdr/plugins");
+           _libDir = Util::Strdupnew(VDR_PLUGIN_LIBDIR);
         else
            _libDir = Util::Strdupnew(tmp);
 

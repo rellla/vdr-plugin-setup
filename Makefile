@@ -54,6 +54,7 @@ SOFILE = libvdr-$(PLUGIN).so
 INCLUDES +=
 
 DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+DEFINES += -DVDR_PLUGIN_LIBDIR='"$(call PKGCFG,libdir)"'
 
 ### The object files (add further files here):
 OBJS     = $(PLUGIN).o  menus.o setupmenu.o setupsetup.o config.o plugins.o sysconfig.o util.o setupsystemmenu.o
