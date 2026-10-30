@@ -26,25 +26,28 @@ zlib license, see the header of these files.
 
 Overview
 --------
-The "Setup Plugin" can be used to to setup all or most configuration parameters 
+The "Setup Plugin" can be used to setup all or most configuration parameters 
 of VDR distributions via the OSD.
 
-The Plugin can be easily configured by editing XML the following XML-Files:
+The Plugin can be easily configured by editing the following XML-Files:
 
-  [VDR-CONFIG-DIR]/plugins/vdr-setup.xml
-  [VDR-CONFIG-DIR]/plugins/vdr-menu.xml
+  [PLUGINS-CONFIG-DIR]/setup/vdr-setup.xml
+  [PLUGINS-CONFIG-DIR]/setup/vdr-menu.xml
 
-minivdr-setup.xml
+Both files can also be language specific, e.g. vdr-setup.de_DE.xml
+(OSDLanguage from setup.conf).
+
+vdr-setup.xml
 =============
-Holds the Setup configuration, See Examples/*/vdr-setup.xml:
+Holds the Setup configuration, see MANUAL.DE.
 
 vdr-menu.xml
 ============
-Holds the VDR Menu-Submenu configuration. See Examples/vdr-menu.xml.
+Holds the VDR Menu-Submenu configuration, see MANUAL.DE.
 
-The configuration files must be copied into the directory PluginsConfigdirectory/setup
+The example files of the original plugin are not included.
 
-Help Viles should be placed in PluginsConfigdirectory/setup/help
+Help files should be placed in [PLUGINS-CONFIG-DIR]/setup/help
 
 Requirements
 ============
@@ -77,10 +80,10 @@ The sysconfig file can be just included by any Shell-Scripts which may interpret
 the stored Variables.
 
 
-All Variable names can be specified within the minivdr-setup.xml configuration file
+All Variable names can be specified within the vdr-setup.xml configuration file
 itself. The predefined Variable PLUGINLIST will hold all activated Plugins including
 their optional parameters, and can be used in the VDR startup script to dynamically
-specifiy the Plugins.
+specify the Plugins.
 
 
 Detailed Information currently only available in german language.

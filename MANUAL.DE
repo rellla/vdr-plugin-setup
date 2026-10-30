@@ -17,8 +17,10 @@ Eine geänderte Plugin-Konfiguration wird erst nach dem nächsten Neustart aktiv
 
 ***** VDR-Menüs *****
 
-Mit dem Setup-Plugin wird ein Patch für den VDR ab Version 1.3.33 geliefert,
-welcher die Erzeugung von Submenüs erlaubt.
+Mit dem Setup-Plugin wird ein Patch für den VDR 2.8.4 geliefert
+(patches/vdr-2.8.4-setup.diff), welcher die Erzeugung von Submenüs erlaubt.
+Ohne den Patch zeigt der VDR sein normales Hauptmenü, alle anderen Funktionen
+des Plugins sind auch ohne Patch nutzbar.
 
 ACHTUNG: Hierbei handelt es sich um eine eigene neue Entwicklung, welcher
          beliebig viele geschachtelte Sub-Sub-Menüs zulässt. Das Plugin Submenu
@@ -55,9 +57,10 @@ Die Beschreibung der Konfigurationsdateien wird hier im Detail beschrieben.
       gekennzeichnete Datei wird vom Plugin angelegt, falls Sie nicht existieren
       sollte. In dieser Datei werden die Einstellungen in Form von
       Shellvariablen gespeichert.
-    * Hilfedateien werden in dem Vezeichnis /etc/vdr/plugins/setup/help
+    * Hilfedateien werden in dem Verzeichnis /etc/vdr/plugins/setup/help
       abgelegt.
-    * Der beigefügte Patch für VDR 1.3.x muss installiert werden.
+    * VDR >= 2.8. Für eigene Hauptmenüs (vdr-menu.xml) muss der beigefügte
+      Patch patches/vdr-2.8.4-setup.diff installiert werden.
     * Das Submenü-Plugin darf nicht zusammen mit dem Setup-Plugin verwendet
       werden.
 
@@ -202,7 +205,7 @@ value     Ausgewählter Wert.
                 werden in Form von "*" angezeigt.
             channellist
 setup           Erlaubt die Auswahl von vordefinierten Kanallisten. Die
-                Kanallisten müssen in den Verzeichnis <vdrdir>/plugins/channels
+                Kanallisten müssen in dem Verzeichnis <vdrdir>/channels
                 mit der Endung *.conf abgelegt werden. Das Setup-Plugin linkt
                 dann die ausgewählte Kanalliste nach <vdrdir>/channels.conf
             networkdriver"
