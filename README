@@ -40,8 +40,17 @@ directory is needed at build time, because the setup classes are extracted
 from its menu.c (set VDRSRC if it is not ../../..).
 
 The main menu of an unpatched VDR does not use vdr-menu.xml. "Menu Edit"
-only changes the main menu, if VDR is patched to load vdr-menu.xml
-(USE_SETUP).
+only changes the main menu, if VDR is patched with
+patches/vdr-2.8.4-setup.diff:
+
+  cd vdr-2.8.4
+  patch -p1 < PLUGINS/src/setup/patches/vdr-2.8.4-setup.diff
+
+The patch adds submenu and tinyxml to VDR and defines USE_SETUP
+(build VDR with SETUP=0 to disable it). VDR then loads
+[PLUGINS-CONFIG-DIR]/setup/vdr-menu.<OSDLanguage>.xml or vdr-menu.xml
+when the main menu is opened. If neither exists, the standard main menu
+is shown.
 
 
 Also please make sure, that the file specified with the parameter "sysconfigFile"
