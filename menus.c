@@ -847,18 +847,23 @@ bool MenuEntry::ChannelList( )
    {
         while( (entry=readdir(dirFP))!=NULL)
         {
-            char *tmp=NULL;
-
-            if( (tmp=strstr(entry->d_name, ".conf"))!= NULL)
+            size_t len = strlen(entry->d_name);
+            if( len > 5 && strcmp(entry->d_name + len - 5, ".conf") == 0)
             {
-              tmp[0]='\0';
+              entry->d_name[len - 5]='\0';
               _selectionValues.Add(entry->d_name);
             }
         }
         char buf[PATH_MAX];
         if( realpath(channelFile, buf) != NULL)
         {
-          _selectionValues.SetSelection(buf);
+          // select the list channels.conf links to
+          char *name = strrchr(buf, '/');
+          name = name ? name + 1 : buf;
+          size_t len = strlen(name);
+          if (len > 5 && strcmp(name + len - 5, ".conf") == 0)
+             name[len - 5] = '\0';
+          _selectionValues.SetSelection(name);
         }
         else
         {
