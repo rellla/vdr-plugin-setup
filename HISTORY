@@ -10,6 +10,14 @@ VDR Plugin 'setup' Revision History
 - Removed the obsolete VDR patches
 - Added patches/vdr-2.8.4-setup.diff, needed for "Menu Edit"
 - Fixed crash on unknown tags in vdr-menu.xml
+- Fixed character encoding and copyright notices
+- Fixed opening system menus from the setup main menu
+- Fixed crash on red key in empty setup menus
+- Fixed closing menus while an item is edited
+- Fixed preselection of the active channel list
+- Fixed translations missing in VDR 2.8
+- VDRlibDir defaults to libdir of vdr.pc
+- vdr-menu.xml and vdr-setup.xml are looked up the same way as VDR does
 
 2008-06-19: setup-0.3.1-zulu-edition
 - From now VDR-Extensions-Patch => 63 or
