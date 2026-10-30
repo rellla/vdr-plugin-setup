@@ -460,7 +460,7 @@ bool cSubMenu::LoadXml(char *fname)
                  node = new cSubMenuNode(root, 0,  &_menuTree, NULL);
                  _menuTree.Add(node);
                  }
-              catch (char *message) {
+              catch (const char *message) {
                  esyslog("ERROR: while decoding XML Node");
                  ok = false;
                  }
