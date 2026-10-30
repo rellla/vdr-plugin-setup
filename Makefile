@@ -16,22 +16,29 @@ VERSION = $(shell grep 'static const char \*VERSION *=' $(PLUGIN).c | awk '{ pri
 ### The directory environment:
 
 # Use package data if installed...otherwise assume we're under the VDR source directory:
-PKGCFG = $(if $(VDRDIR),$(shell pkg-config --variable=$(1) $(VDRDIR)/vdr.pc),$(shell pkg-config --variable=$(1) vdr || pkg-config --variable=$(1) ../../../vdr.pc))
+PKG_CONFIG ?= pkg-config
+PKGCFG = $(if $(VDRDIR),$(shell $(PKG_CONFIG) --variable=$(1) $(VDRDIR)/vdr.pc),$(shell PKG_CONFIG_PATH="$$PKG_CONFIG_PATH:../../.." $(PKG_CONFIG) --variable=$(1) vdr))
 LIBDIR = $(call PKGCFG,libdir)
 LOCDIR = $(call PKGCFG,locdir)
 PLGCFG = $(call PKGCFG,plgcfg)
-VDRCONFDIR= $(call PKGCFG,configdir)
-PLGRESDIR = $(call PKGCFG,resdir)/plugins/$(PLUGIN)
+#
 TMPDIR ?= /tmp
 
+# VDR source directory, needed to extract the setup classes from menu.c:
+VDRSRC ?= $(if $(VDRDIR),$(VDRDIR),../../..)
+
 ### The compiler options:
+
 export CFLAGS   = $(call PKGCFG,cflags)
 export CXXFLAGS = $(call PKGCFG,cxxflags)
 
-### Allow user defined options to overwrite defaults:
--include $(PLGCFG)
+### The version number of VDR's plugin API:
 
 APIVERSION = $(call PKGCFG,apiversion)
+
+### Allow user defined options to overwrite defaults:
+
+-include $(PLGCFG)
 
 ### The name of the distribution archive:
 
@@ -44,9 +51,7 @@ SOFILE = libvdr-$(PLUGIN).so
 
 ### Includes and Defines (add further entries here):
 
-INCLUDES += -I$(VDRDIR)/include
-
--include $(VDRDIR)/Make.config 
+INCLUDES +=
 
 DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
 
@@ -107,9 +112,9 @@ install-lib: $(SOFILE)
 
 install: install-lib install-i18n
 	
-setupsystemmenu.c:  ../../../menu.c
+setupsystemmenu.c: $(VDRSRC)/menu.c getVdrSetupMenu.pl
 	@echo "Extracting class definitions from VDR's menu.c for standard Setup"
-	@perl getVdrSetupMenu.pl ../../../menu.c
+	@perl getVdrSetupMenu.pl $(VDRSRC)/menu.c
 
 	
 dist: clean
