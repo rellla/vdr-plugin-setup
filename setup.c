@@ -13,7 +13,7 @@
 #include "setupmenu.h"
 #include "setupsetup.h"
 
-static const char *VERSION        = "0.3.1-easyVDR-edition";
+static const char *VERSION        = "0.3.2-easyVDR-edition";
 static const char *DESCRIPTION    = trNOOP("VDR-Setup Extension");
 static const char *MAINMENUENTRY  = trNOOP("Setup");
 

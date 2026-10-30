@@ -35,10 +35,13 @@ Help Viles should be placed in PluginsConfigdirectory/setup/help
 
 Requirements
 ============
-It is required to apply the patch to VDR included with the plugin.
+VDR >= 2.8. The plugin builds against an unpatched VDR. The VDR source
+directory is needed at build time, because the setup classes are extracted
+from its menu.c (set VDRSRC if it is not ../../..).
 
-For vdr-setup-0.3.1-zulu-edition the VDR-Extensions-Patch => 63 or
-VDR-Extensions-Patch 62 + vdr-ext62_setup-custom-plugin-title.diff is required
+The main menu of an unpatched VDR does not use vdr-menu.xml. "Menu Edit"
+only changes the main menu, if VDR is patched to load vdr-menu.xml
+(USE_SETUP).
 
 
 Also please make sure, that the file specified with the parameter "sysconfigFile"
